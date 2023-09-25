@@ -1,0 +1,42 @@
+@startuml
+
+class Jugador {
+  -nombre: String
+  -pais: String
+  -faltas: int
+  -golesDirectos: int
+  -totalLanzamientos: int
+  +calcularEfectividad(): double
+}
+
+class Portero {
+  -paradasEfectivas: int
+  -golesRecibidos: int
+  +calcularEfectividad(): double
+}
+
+class Extremo {
+  -pases: int
+  -asistenciasEfectivas: int
+  +calcularEfectividad(): double
+}
+
+class Campeonato {
+  -jugadores: ArrayList<Jugador>
+  +agregarJugador(Jugador)
+  +mostrarJugadores()
+  +mostrarMejoresPorteros()
+  +contarExtremosEfectivos()
+}
+
+class Menu {
+  +mostrarMenu()
+  +leerOpcion(): int
+}
+
+Jugador <|-- Portero : Herencia
+Jugador <|-- Extremo : Herencia
+Campeonato *-- Jugador : Asociación
+Campeonato *-- Menu : Asociación
+
+@enduml
